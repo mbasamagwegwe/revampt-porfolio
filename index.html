@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="left">
+
+  <h2>MBASA MAGWEGWE</h2>
+
+<img src="mb.jpeg"width="200px"height="200px">
+
+
+<h2>Junior Frontend Developer</h2>
+
+<a href="about.html"type="button"class="btn">SKILLS....</a>
+<br>
+<br>
+<br>
+<a href="project.html"type="button"class="btn">project</a>
+
+<h2>lets get intouch</h2>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+
+
+<footer>
+  <div class="rounded-social-buttons">
+                    <a class="social-button facebook" href="https://www.facebook.com/profile.php?id=100011407535151" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="social-button twitter" href="https://github.com/mbasamagwegwe" target="_blank"><i class="fab fa-github"></i></a>
+                    <a class="social-button linkedin" href="https://www.linkedin.com/in/mbasa-magwegwe-8a462b1b3/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+</footer>
+
+</div>
+<center>
+    <div class="right">
+
+<p>Hi i am Mbasa i design and create website for a living<br>I am open for a collabor</p>
+
+<h3>I am a 
+    <span
+       class="txt-rotate"
+       data-period="2000"
+       data-rotate='["Designer", "Developer", "Freelencer", "a mother" ]'></span>
+  </h3>
+  <div class="p p-1"></div>
+  <div class="p p-2"></div>
+  <div class="p p-3"></div>
+  <div class="p p-4"></div>
+
+<br>
+<br>
+<br>
+<a href="about.html"type="button"class="butn">VIEW MORE</a>
+    
+
+</center> 
+
+</div>
+<script>
+
+
+var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
+
+
+
+
+</script>
+</body>
+
+
+
+
+</html>
